@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,124 +10,150 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<Loginpage> {
+//text controllers
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim()
+        );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purpleAccent[300],
       body: SafeArea(
         child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(
-              Icons
-                  .phone_android_rounded, // idhar image daalna hain badme abhi icon hain
-              size: 80,
-            ),
-            SizedBox(height: 35),
-            //Hello!!!!!
-            Text('Hello Again!',
-                style: GoogleFonts.bebasNeue(
-                  fontSize: 54,
-                )),
-            SizedBox(height: 10),
-            Text(
-              'Welcome Back',
-              style: TextStyle(
-                fontSize: 20,
+          child: SingleChildScrollView(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(
+                Icons.android, // idhar image daalna hain badme abhi icon hain
+                size: 70,
               ),
-            ),
-            SizedBox(height: 20),
-            //email field
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.pink[100],
-                  border: Border.all(color: Colors.white),
-                  borderRadius:
-                      BorderRadius.circular(12), // circular box deta hain
+              SizedBox(height: 35),
+              //Hello!!!!!
+              Text('Hello Again!',
+                  style: GoogleFonts.bebasNeue(
+                    fontSize: 54,
+                  )),
+              SizedBox(height: 10),
+              Text(
+                'Welcome Back',
+                style: TextStyle(
+                  fontSize: 20,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Email',
+              ),
+              SizedBox(height: 20),
+
+              //email field
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12), // circular box deta hain
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepPurple),
+                    borderRadius: BorderRadius.circular(12),
+                     ),
+                     hintText:'Email',
+                     fillColor: Colors.pink[200],
+                     filled: true,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+
+
+
+              //password field
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12), // circular box deta hain
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepPurple),
+                    borderRadius: BorderRadius.circular(12),
+                     ),
+                     hintText:'Password',
+                     fillColor: Colors.pink[200],
+                     filled: true,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+
+
+
+
+              
+              //sign in button
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: GestureDetector(
+                  onTap: signIn,
+                  child: Container(
+                    padding: EdgeInsets.all(25),
+                    decoration: BoxDecoration(
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.circular(12), //
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                  height:
+                      25), // agle wale se pichle wale ke beech thora space deta hain
+              //not a member? register
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            //password field
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 25.0), //padding karega password box ka
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.pink[100],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left:
-                          20.0), // box ke andar text aur marzin ke bich paddind deta hain
-                  child: TextField(
-                    obscureText: true, // password dekhne nahi deta
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText:
-                          'Password', //box ke andar default text show karta hain
+                  Text(
+                    'Register',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            //sign in button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: EdgeInsets.all(25),
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(12), //
-                ),
-                child: Center(
-                    child: Text(
-                  'Sign In',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                )),
-              ),
-            ),
-            SizedBox(
-                height:
-                    25), // agle wale se pichle wale ke beech thora space deta hain
-            //not a member? register
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Not a member?',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  'Register',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            )
-          ]),
+                ],
+              )
+            ]),
+          ),
         ),
       ),
     );
