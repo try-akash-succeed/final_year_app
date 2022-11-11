@@ -1,3 +1,4 @@
+import 'package:finalyear_flutter/auth_page.dart';
 import 'package:finalyear_flutter/home_page.dart';
 import 'package:finalyear_flutter/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,7 +16,7 @@ class MainPage extends StatelessWidget {
           if (snapshot.hasData) {
             return HomePage();
           } else {
-            return Loginpage();
+            return AuthPage();
           }
         },
       ),
