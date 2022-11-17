@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,22 +20,52 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
+  final _fullNameController = TextEditingController();
+  final _instituteController = TextEditingController();
+  final _ageController = TextEditingController();
+  final _stateController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmpasswordController.dispose();
+    _fullNameController.dispose();
+    _instituteController.dispose();
+    _ageController.dispose();
+    _stateController.dispose();
     super.dispose();
   }
 
   Future signUp() async {
     if (passwordConfirmed()) {
+      // create user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+
+      // add user details
+      addUserDetails(
+        _fullNameController.text.trim(),
+        _instituteController.text.trim(),
+        _stateController.text.trim(),
+        _emailController.text.trim(),
+        int.parse(_ageController.text.trim()),
+        );
     }
+  }
+// adding  all the data like name age etc. adding the method upwards see
+  Future addUserDetails(String fullName, String instituteName,String state,String email,int age) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'full name': fullName,
+    'institute name': instituteName,
+    'state': state,
+    'email': email,
+    'age': age,
+
+    });
+    
   }
 
   bool passwordConfirmed() {
@@ -55,13 +86,13 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Icon(
-                Icons.android, // idhar image daalna hain badme abhi icon hain
-                size: 70,
-              ),
+              //Icon(
+              //  Icons.android, // idhar image daalna hain badme abhi icon hain
+              // size: 70,
+              //),
               SizedBox(height: 35),
               //Hello!!!!!
-              Text('XSTATIC',
+              Text('HELLO!',
                   style: GoogleFonts.bebasNeue(
                     fontSize: 54,
                   )),
@@ -73,6 +104,100 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(height: 20),
+
+              //full name controller
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _fullNameController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius:
+                          BorderRadius.circular(12), // circular box deta hain
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Full Name',
+                    fillColor: Colors.pink[200],
+                    filled: true,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+
+              // institute name controller
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _instituteController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius:
+                          BorderRadius.circular(12), // circular box deta hain
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Institute Name',
+                    fillColor: Colors.pink[200],
+                    filled: true,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+
+              //age Controller
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _ageController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius:
+                          BorderRadius.circular(12), // circular box deta hain
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Age',
+                    fillColor: Colors.pink[200],
+                    filled: true,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+
+              //state controller
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _stateController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius:
+                          BorderRadius.circular(12), // circular box deta hain
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'State',
+                    fillColor: Colors.pink[200],
+                    filled: true,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
 
               //email field
               Padding(

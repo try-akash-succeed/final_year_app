@@ -44,7 +44,7 @@ class _LoginPageState extends State<Loginpage> {
               ),
               SizedBox(height: 35),
               //Hello!!!!!
-              Text('XSTATIC',
+              Text('HELLO!',
                   style: GoogleFonts.bebasNeue(
                     fontSize: 54,
                   )),
