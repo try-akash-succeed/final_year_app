@@ -17,9 +17,21 @@ class _LoginPageState extends State<Loginpage> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
+    // loading circle matlaab loading dekhata hain sirf yeah showdialog
+    // firebaseauth ke upar dalo isko bas login ke age loading dikhayega
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(child: CircularProgressIndicator());
+        });
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
+
+
+    //loading ko pop karneka method
+    Navigator.of(context).pop();  // loading scrren off karta hain
   }
 
   @override
@@ -110,7 +122,8 @@ class _LoginPageState extends State<Loginpage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(      // forgot password page me navigate karega
+                        Navigator.push(context, MaterialPageRoute(
+                          // forgot password page me navigate karega
                           builder: (context) {
                             return ForgotPasswordPage();
                           },
