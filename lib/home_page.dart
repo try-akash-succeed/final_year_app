@@ -14,21 +14,136 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('successfully signed in as:'+ user.email!),
-          MaterialButton(onPressed: (){
-               FirebaseAuth.instance.signOut();
-          },
-          color: Colors.pink[200],
-          child: Text('sign out'),
-          )
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: Icon(Icons.menu, color: Colors.black),
+        title: Text(
+          'Home',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushReplacementNamed('/login');
+            },
+            icon: Icon(Icons.logout, color: Colors.black),
+          ),
         ],
       ),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Welcome back,',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 5),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                user.email!,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                  color: Colors.pink[50],
+                ),
+                child: GridView.count(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  children: [
+                    _buildFunctionalityCard(
+                      'Restaurant Search',
+                      Icons.search,
+                      () {
+                        // TODO: Implement functionality
+                      },
+                    ),
+                    _buildFunctionalityCard(
+                      'Order History',
+                      Icons.history,
+                      () {
+                        // TODO: Implement functionality
+                      },
+                    ),
+                    _buildFunctionalityCard(
+                      'Payment Methods',
+                      Icons.payment,
+                      () {
+                        // TODO: Implement functionality
+                      },
+                    ),
+                    _buildFunctionalityCard(
+                      'Settings',
+                      Icons.settings,
+                      () {
+                        // TODO: Implement functionality
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-  
+    );
+  }
+
+  Widget _buildFunctionalityCard(
+    String title,
+    IconData icon,
+    VoidCallback onTap,
+  ) {
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 50, color: Colors.pink),
+              SizedBox(height: 15),
+              Text(
+                title,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
