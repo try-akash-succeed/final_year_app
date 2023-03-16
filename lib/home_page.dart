@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   ),
-                  color: Colors.pink[50],
+                  color: Color.fromARGB(255, 237, 41, 106),
                 ),
                 child: GridView.count(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -79,28 +79,28 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 20,
                   children: [
                     _buildFunctionalityCard(
-                      'Restaurant Search',
+                      'Quiz Section',
                       Icons.search,
                       () {
                         // TODO: Implement functionality
                       },
                     ),
                     _buildFunctionalityCard(
-                      'Order History',
+                      'News Portal',
                       Icons.history,
                       () {
                         // TODO: Implement functionality
                       },
                     ),
                     _buildFunctionalityCard(
-                      'Payment Methods',
+                      'Know your Heroes',
                       Icons.payment,
                       () {
                         // TODO: Implement functionality
                       },
                     ),
                     _buildFunctionalityCard(
-                      'Settings',
+                      'Connect/about',
                       Icons.settings,
                       () {
                         // TODO: Implement functionality
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 50, color: Colors.pink),
+              Icon(icon, size: 50, color: Color.fromARGB(255, 159, 4, 56)),
               SizedBox(height: 15),
               Text(
                 title,
