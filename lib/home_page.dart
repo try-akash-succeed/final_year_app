@@ -1,6 +1,14 @@
+import 'package:finalyear_flutter/MyApp.dart';
+import 'package:finalyear_flutter/Quiz_Cat.dart';
+import 'package:finalyear_flutter/quiz_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'About__page.dart';
+import 'Hero_page.dart';
+import 'News_page.dart';
+import 'quiz_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -83,6 +91,12 @@ class _HomePageState extends State<HomePage> {
                       Icons.search,
                       () {
                         // TODO: Implement functionality
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Quiz_Cat(),
+                          ),
+                        );
                       },
                     ),
                     _buildFunctionalityCard(
@@ -90,13 +104,26 @@ class _HomePageState extends State<HomePage> {
                       Icons.history,
                       () {
                         // TODO: Implement functionality
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => News_page(),
+                          ),
+                        );
                       },
                     ),
+                    
                     _buildFunctionalityCard(
                       'Know your Heroes',
                       Icons.payment,
                       () {
                         // TODO: Implement functionality
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Hero_page(),
+                          ),
+                        );
                       },
                     ),
                     _buildFunctionalityCard(
@@ -104,6 +131,12 @@ class _HomePageState extends State<HomePage> {
                       Icons.settings,
                       () {
                         // TODO: Implement functionality
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => About_page(),
+                          ),
+                        );
                       },
                     ),
                   ],

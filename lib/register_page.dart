@@ -129,75 +129,75 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(height: 10),
 
               // institute name controller
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
-                  controller: _instituteController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius:
-                          BorderRadius.circular(12), // circular box deta hain
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    hintText: 'Institute Name',
-                    fillColor: Colors.pink[200],
-                    filled: true,
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              //   child: TextField(
+              //     controller: _instituteController,
+              //     decoration: InputDecoration(
+              //       enabledBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.white),
+              //         borderRadius:
+              //             BorderRadius.circular(12), // circular box deta hain
+              //       ),
+              //       focusedBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.deepPurple),
+              //         borderRadius: BorderRadius.circular(12),
+              //       ),
+              //       hintText: 'Institute Name',
+              //       fillColor: Colors.pink[200],
+              //       filled: true,
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(height: 10),
 
               //age Controller
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
-                  controller: _ageController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius:
-                          BorderRadius.circular(12), // circular box deta hain
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    hintText: 'Age',
-                    fillColor: Colors.pink[200],
-                    filled: true,
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              //   child: TextField(
+              //     controller: _ageController,
+              //     decoration: InputDecoration(
+              //       enabledBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.white),
+              //         borderRadius:
+              //             BorderRadius.circular(12), // circular box deta hain
+              //       ),
+              //       focusedBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.deepPurple),
+              //         borderRadius: BorderRadius.circular(12),
+              //       ),
+              //       hintText: 'Age',
+              //       fillColor: Colors.pink[200],
+              //       filled: true,
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(height: 10),
 
               //state controller
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
-                  controller: _stateController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius:
-                          BorderRadius.circular(12), // circular box deta hain
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    hintText: 'State',
-                    fillColor: Colors.pink[200],
-                    filled: true,
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              //   child: TextField(
+              //     controller: _stateController,
+              //     decoration: InputDecoration(
+              //       enabledBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.white),
+              //         borderRadius:
+              //             BorderRadius.circular(12), // circular box deta hain
+              //       ),
+              //       focusedBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.deepPurple),
+              //         borderRadius: BorderRadius.circular(12),
+              //       ),
+              //       hintText: 'State',
+              //       fillColor: Colors.pink[200],
+              //       filled: true,
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(height: 10),
 
               //email field
               Padding(
